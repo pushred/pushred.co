@@ -29,7 +29,7 @@ try {
 const CONTENT = Path.resolve(gutil.env.content || JSON.parse(contentConfig).path);
 gutil.log('Using content from', gutil.colors.magenta(CONTENT));
 
-gulp.task('build', ['buildPages']);
+gulp.task('build', ['buildPages', 'copyStaticFiles']);
 
 //////////////////
 // static site //
@@ -62,6 +62,12 @@ gulp.task('buildPages', ['getContent'], () => {
     .pipe(gulp.dest('.build'));
 });
 
+gulp.task('copyStaticFiles', () => {
+  return gulp
+    .src('server/files/**/*')
+    .pipe(gulp.dest('.build/files'));
+});
+
 /////////////////////
 // preview server //
 ///////////////////
@@ -83,5 +89,9 @@ gulp.task('default', ['build'], () => {
 
   watch(['server/**/*.hbs', CONTENT + '/**/*.{md,yml}'], () => {
     run('buildPages', browserSync.reload);
+  });
+
+  watch(['server/files/**/*.{jpg,png}', CONTENT + '/**/*.{jpg,png,svg}'], () => {
+    run('copyStaticFiles');
   });
 });
