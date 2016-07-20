@@ -43,6 +43,10 @@ Dependencies
 
  - [Handlebars templates][handlebars] and it's (mostly) built-in helpers traverse the rendering context and render markup
 
+### Assets
+
+ - [gulp-svgstore][gulp-svgstore] bundles SVG assets in the site and content folders for [access as a sprite][svg-sprites]. [gulp-svgmin][gulp-svgmin] cleans the files up with SVGO and replaces fill colors with `currentColor` for [styling][svg-styling].
+
 ### Hosting
 
  - [gulp-s3-upload][gulp-s3-upload] uploads any new assets found in the content folder to the `pushred-files` S3 bucket, accessible via CloudFront at `http://files.pushred.co/*`
@@ -70,8 +74,12 @@ The content path can also be defined in `/config/content.json` with the property
 [commonmark]: http://commonmark.org
 [gulp]: http://gulpjs.com
 [gulp-s3-upload]: https://github.com/clineamb/gulp-s3-upload
+[gulp-svgmin]: https://github.com/ben-eb/gulp-svgmin
+[gulp-svgstore]: https://github.com/w0rm/gulp-svgstore
 [markdown-it]: https://github.com/markdown-it/markdown-it
 [handlebars]: http://handlebarsjs.com
+[svg-sprites]: https://css-tricks.com/svg-symbol-good-choice-icons/
+[svg-styling]: http://tympanus.net/codrops/2015/07/16/styling-svg-use-content-css/
 [node]: https://nodejs.org
 [npm]: https://docs.npmjs.com/getting-started/installing-npm-packages-locally
 [npm-permissions]: https://docs.npmjs.com/getting-started/fixing-npm-permissions

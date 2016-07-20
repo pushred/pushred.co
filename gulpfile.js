@@ -7,6 +7,8 @@ const handlebars = require('gulp-hb');
 const Path = require('path');
 const rename = require('gulp-rename');
 const run = require('run-sequence');
+const svgmin = require('gulp-svgmin');
+const svgstore = require('gulp-svgstore');
 const watch = require('gulp-watch');
 const yamlToJSON = require('gulp-yaml');
 
@@ -30,7 +32,7 @@ try {
 const CONTENT = Path.resolve(gutil.env.content || JSON.parse(contentConfig).path);
 gutil.log('Using content from', gutil.colors.magenta(CONTENT));
 
-gulp.task('build', ['buildPages', 'copyStaticFiles']);
+gulp.task('build', ['buildPages', 'bundleSVG', 'copyStaticFiles']);
 
 //////////////////
 // static site //
@@ -75,6 +77,25 @@ gulp.task('copyStaticFiles', () => {
 
 gulp.task('uploadAssets', () => uploadAssets(CONTENT));
 
+gulp.task('bundleSVG', () => {
+  return gulp
+    .src('server/files/**/*.svg')
+    .pipe(svgmin({
+      js2svg: {
+        pretty: true
+      },
+      plugins: [{
+        convertColors: {
+          currentColor: true
+        }
+      }]
+    }))
+    .pipe(svgstore())
+    .on('error', handleError)
+    .pipe(rename('bundle.svg'))
+    .pipe(gulp.dest('.build/files'));
+});
+
 /////////////////////
 // preview server //
 ///////////////////
@@ -96,6 +117,10 @@ gulp.task('default', ['build'], () => {
 
   watch(['server/**/*.hbs', CONTENT + '/**/*.{md,yml}'], () => {
     run('buildPages', browserSync.reload);
+  });
+
+  watch(['server/files/**/*.svg'], () => {
+    run('bundleSVG');
   });
 
   watch(['server/files/**/*.{jpg,png}', CONTENT + '/**/*.{jpg,png,svg}'], () => {
