@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-route="{{path}}">
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  {{> metadata}}
+
+</head>
+<body id="top">
+
+  <header class="header">
+    <h1 class="header__logo"><a href="#top">PUSH</a></h1>
+    <p class="header__text">a one-man design/development studio in brooklyn, specializing in the unknown</p>
+    <a class="header__contact" href="mailto:{{{munge 'eric@pushred.co'}}}">{{{munge 'eric@pushred.co'}}}</a>
+  </header>
+
+  <main class="main">
+    {{#each projects}}
+      <section class="timeline">
+        <time class="timeline__date">
+          <span class="timeline__date_month">{{date @key 'MMM'}}</span>
+          <span class="timeline__date_year">{{date @key '`YY'}}</span>
+        </time>
+        {{#each .}}
+          <article class="project">
+            <div class="project__preview">
+              {{#video}}
+                <video class="project__video" loop preload>
+                  <source src="{{.}}" type="video/mp4" />
+                </video>
+              {{/video}}
+              {{#images}}
+                <img class="project__image" src="{{.}}" />
+              {{/images}}
+            </div>
+            <div class="project__summary">
+              <h1 class="project__title">{{{title .}}}</h1>
+              <p class="project__text">{{{description}}}</p>
+            </div>
+            <div class="project__details">
+              {{{details}}}
+            </div>
+          </article>
+        {{/each}}
+      </section>
+    {{/each}}
+  </main>
+
+  <footer class="footer">
+    <nav class="footer__nav">
+      <a class="footer__link" href="https://github.com/pushred" title="GitHub">GitHub</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/pushred" title="LinkedIn">LinkedIn</a>
+      <a class="footer__link" href="https://soundcloud.com/pushred" title="SoundCloud">SoundCloud</a>
+      <a class="footer__link" href="https://twitter.com/pushred" title="Twitter">Twitter</a>
+      <a class="footer__link" href="https://instagram.com/burntwing" title="Instagram">Instagram</a>
+      <a class="footer__link" href="https://store.2600.com/collections/club-mate" title="You get used to it!">Club Mate</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

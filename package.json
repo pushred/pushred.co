@@ -1,0 +1,24 @@
+{
+  "name": "pushred.co",
+  "author": "Eric Lanehart <eric@pushred.co> (http://pushred.co)",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-hb": "^5.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.5",
+    "gulp-yaml": "^1.0.1",
+    "handlebars": "^3.0.3",
+    "js-yaml": "^3.6.1",
+    "markdown-it": "^4.4.0",
+    "moment": "^2.14.1",
+    "munge": "^0.1.7",
+    "parameterize": "0.0.7",
+    "run-sequence": "^1.1.4",
+    "through2": "^2.0.0"
+  },
+  "optionalDependencies": {
+    "browser-sync": "^2.9.6",
+    "clean-urls": "^1.1.5"
+  }
+}

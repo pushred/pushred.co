@@ -1,0 +1,32 @@
+{{#if title}}
+  <title>{{{title}}} . PUSH</title>
+  <meta property="twitter:title" content="{{{title}}}">
+  <meta property="og:title" content="{{{title}}}">
+{{else}}
+  <title>PUSH</title>
+  <meta property="twitter:title" content="Push the Red Button">
+  <meta property="og:title" content="Push the Red Button">
+{{/if}}
+
+{{#if description}}
+    <meta name="description" content="{{{description}}}">
+    <meta property="og:description" content="{{{description}}}">
+    <meta property="twitter:description" content="{{{description}}}">
+{{else}}
+    <meta name="description" content="Design and development, specializing in the unknown.">
+    <meta property="og:description" content="Design and development, specializing in the unknown.">
+    <meta property="twitter:description" content="Design and development, specializing in the unknown.">
+{{/if}}
+
+<meta property="og:site_name" content="Push the Red Button">
+<meta property="twitter:site" content="@pushred">
+<meta property="twitter:domain" content="http://www.pushred.co">
+<meta property="twitter:author" content="@pushred">
+
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+
+{{#if image}}
+  <meta property="og:image" content="{{image}}">
+  <meta property="twitter:image" content="{{image}}">
+{{/if}}
