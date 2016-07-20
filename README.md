@@ -43,6 +43,10 @@ Dependencies
 
  - [Handlebars templates][handlebars] and it's (mostly) built-in helpers traverse the rendering context and render markup
 
+### Hosting
+
+ - [gulp-s3-upload][gulp-s3-upload] uploads any new assets found in the content folder to the `pushred-files` S3 bucket, accessible via CloudFront at `http://files.pushred.co/*`
+
 
 Local Editing
 -------------
@@ -65,6 +69,7 @@ The content path can also be defined in `/config/content.json` with the property
 
 [commonmark]: http://commonmark.org
 [gulp]: http://gulpjs.com
+[gulp-s3-upload]: https://github.com/clineamb/gulp-s3-upload
 [markdown-it]: https://github.com/markdown-it/markdown-it
 [handlebars]: http://handlebarsjs.com
 [node]: https://nodejs.org

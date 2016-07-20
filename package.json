@@ -3,8 +3,10 @@
   "author": "Eric Lanehart <eric@pushred.co> (http://pushred.co)",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-hashsum": "^1.0.0",
     "gulp-hb": "^5.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-s3-upload": "^1.5.0",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.5",
     "gulp-yaml": "^1.0.1",

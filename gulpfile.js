@@ -11,6 +11,7 @@ const watch = require('gulp-watch');
 const yamlToJSON = require('gulp-yaml');
 
 const markdown = require('./tasks/markdown');
+const uploadAssets = require('./tasks/upload_assets');
 
 function handleError (err) {
   gutil.log(err.toString());
@@ -67,6 +68,12 @@ gulp.task('copyStaticFiles', () => {
     .src('server/files/**/*')
     .pipe(gulp.dest('.build/files'));
 });
+
+/////////////
+// assets //
+///////////
+
+gulp.task('uploadAssets', () => uploadAssets(CONTENT));
 
 /////////////////////
 // preview server //
