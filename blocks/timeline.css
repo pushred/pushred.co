@@ -8,7 +8,6 @@ $timelineDot: 3em;
 
   position: relative;
   margin-bottom: $marginY;
-  padding-left: 20rem;
 
   &__date {
 

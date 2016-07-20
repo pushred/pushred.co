@@ -7,6 +7,9 @@
 
   {{> metadata}}
 
+  <link href="/files/bundle.css" rel="stylesheet" type="text/css">
+  <script src="/files/bundle.js"></script>
+
 </head>
 <body id="top">
 
@@ -39,9 +42,13 @@
               <h1 class="project__title">{{{title .}}}</h1>
               <p class="project__text">{{{description}}}</p>
             </div>
-            <div class="project__details">
-              {{{details}}}
-            </div>
+            {{#if details}}
+              <div id="details-{{@../index}}" class="project__details">
+                <div class="project__details_content">
+                  {{{details}}}
+                </div>
+              </div>
+            {{/if}}
           </article>
         {{/each}}
       </section>

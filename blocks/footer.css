@@ -7,7 +7,7 @@ $footerHeight: calc(3em + ($marginY * 2));
 
 .footer {
 
-  margin: $marginY $marginX;
+  margin: $marginY 0;
 
   &__link {
     @mixin reset-link;

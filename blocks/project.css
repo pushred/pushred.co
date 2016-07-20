@@ -3,9 +3,15 @@
 @import '../browser/mixins/clearfix';
 @import '../browser/mixins/resets';
 
+@import './timeline';
+
 .project {
 
   @mixin clearfix;
+
+  lost-offset: -2/12;
+
+  position: relative;
 
   &__title {
     margin: 0;
@@ -17,34 +23,62 @@
   &__summary,
   &__details {
 
+    lost-column: 7/12;
+
     font-family: $textFamily;
     font-size: 1.4em;
 
     * { font-size: 1em }
+    *:last-child { margin-bottom: 0 }
 
     ul { @mixin reset-list; }
 
   }
 
   &__details {
-    margin: .5em 0 0 0;
-    padding-left: 57rem;
-    position: absolute;
-    left: -$marginX;
-    right: -$marginX;
-    background-color: $panelColor;
+
+    position: relative;
+    margin-top: $gutterY;
+    box-sizing: border-box;
+
+    * {
+      position: relative;
+      z-index: $zindexContent;
+    }
+
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 200vw;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: -50vw;
+      background-color: $panelColor;
+      z-index: $zindexBackground;
+    }
+
   }
+
+  &__details,
+  &__details_content {
+    opacity: .75;
+    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &__details_content > *:first-child { margin-top: $gutterY }
+  &__details_content > *:last-child { margin-bottom: $gutterY }
 
   &__preview {
 
-    width: 28rem;
+    lost-column: 3/12;
+
     position: relative;
     z-index: $zindexContent;
-    float: left;
-    margin: 0 $gutterX $gutterY 0;
     box-shadow: 0 4px 4px color($black a(12%));
 
-    > * { width: 28rem }
+    > * { width: 100% }
 
   }
 

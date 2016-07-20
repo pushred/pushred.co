@@ -5,6 +5,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const handlebars = require('gulp-hb');
+const lost = require('lost');
 const Path = require('path');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
@@ -35,7 +36,7 @@ try {
 const CONTENT = Path.resolve(gutil.env.content || JSON.parse(contentConfig).path);
 gutil.log('Using content from', gutil.colors.magenta(CONTENT));
 
-gulp.task('build', ['buildPages', 'bundleCSS', 'bundleJS', 'bundleSVG', 'copyStaticFiles']);
+gulp.task('build', ['getContent', 'buildPages', 'bundleCSS', 'bundleJS', 'bundleSVG', 'copyStaticFiles']);
 
 //////////////////
 // static site //
@@ -49,7 +50,7 @@ gulp.task('getContent', () => {
     .pipe(gulp.dest('.build'));
 });
 
-gulp.task('buildPages', ['getContent'], () => {
+gulp.task('buildPages', () => {
   return gulp
     .src('server/index.hbs')
     .pipe(handlebars({
@@ -147,6 +148,14 @@ gulp.task('default', ['build'], () => {
 
   watch(['server/**/*.hbs', CONTENT + '/**/*.{md,yml}'], () => {
     run('buildPages', browserSync.reload);
+  });
+
+  watch(['browser/*.css', 'blocks/*.css'], () => {
+    run('bundleCSS', browserSync.reload);
+  });
+
+  watch(['browser/*.js', 'blocks/*.js'], () => {
+    run('bundleJS', browserSync.reload);
   });
 
   watch(['server/files/**/*.svg'], () => {
