@@ -1,0 +1,48 @@
+@import '../browser/color';
+@import '../browser/layout';
+@import '../browser/mixins/hide';
+@import '../browser/mixins/resets';
+
+$footerHeight: calc(3em + ($marginY * 2));
+
+.footer {
+
+  margin: $marginY $marginX;
+
+  &__link {
+    @mixin reset-link;
+    float: left;
+    color: $black;
+  }
+
+  span { @mixin hide-element; }
+
+  &__icon,
+  &__ansi { height: 3em }
+
+  &__icon {
+    margin: 0 1em;
+    transition: color .2s;
+    color: $black;
+  }
+
+  &__icon:hover { color: $red }
+
+  &__icon--github {
+    width: 2.1em;
+    margin-left: 0.45em; /* align with timeline dots */
+  }
+
+  &__icon--linkedin { width: 2em }
+  &__icon--soundcloud { width: 3em }
+  &__icon--twitter { width: 1.9em }
+  &__icon--instagram { width: 2em }
+  &__icon--club-mate { width: 2.4em }
+
+  &__icon--ansi {
+    width: 2.6em;
+    float: right;
+    color: $red;
+  }
+
+}

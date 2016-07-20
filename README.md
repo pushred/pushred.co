@@ -43,9 +43,15 @@ Dependencies
 
  - [Handlebars templates][handlebars] and it's (mostly) built-in helpers traverse the rendering context and render markup
 
-### Assets
+### Frontend
+
+ - [autoprefixer][autoprefixer] prefixes newer CSS properties that aren’t quite evenly supported yet with their vendor prefixes as defined by caniuse.com
+
+ - [browserify][browserify] bundles all JavaScript into a single file, traversing all of the files and resolving any required modules defined in the CommonJS style.
 
  - [gulp-svgstore][gulp-svgstore] bundles SVG assets in the site and content folders for [access as a sprite][svg-sprites]. [gulp-svgmin][gulp-svgmin] cleans the files up with SVGO and replaces fill colors with `currentColor` for [styling][svg-styling].
+
+ - [postcss][postcss] compiles all CSS into a single file. It also implements some features that don’t exist in CSS yet while outputting browser-friendly code.
 
 ### Hosting
 
@@ -71,6 +77,8 @@ For example: `~/Dropbox/pushred.co/website`.
 The content path can also be defined in `/config/content.json` with the property `path`
 
 
+[autoprefixer]: https://github.com/postcss/autoprefixer
+[browserify]: http://browserify.org
 [commonmark]: http://commonmark.org
 [gulp]: http://gulpjs.com
 [gulp-s3-upload]: https://github.com/clineamb/gulp-s3-upload
@@ -83,4 +91,5 @@ The content path can also be defined in `/config/content.json` with the property
 [node]: https://nodejs.org
 [npm]: https://docs.npmjs.com/getting-started/installing-npm-packages-locally
 [npm-permissions]: https://docs.npmjs.com/getting-started/fixing-npm-permissions
+[postcss]: https://github.com/postcss/postcss
 [yaml]: https://en.wikipedia.org/wiki/YAML

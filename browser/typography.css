@@ -1,0 +1,68 @@
+@import './color';
+@import './mixins/bullet';
+@import './mixins/resets';
+@import './mixins/clearfix';
+
+$logoFamily: 'Input Sans';
+$displayFamily: 'Input Sans';
+$textFamily: 'Source Sans', 'Arial', sans-serif;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $displayFamily;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font-size: 1.6em }
+h2 { font-size: 4em }
+h3 { font-size: 3.6em }
+h4 { font-size: 3.0em }
+h5 { font-size: 2.2em }
+h6 { font-size: 1.6em }
+
+a {
+  color: $textColor;
+  border-bottom: 1px solid color($textColor a(15%));
+  text-decoration: none;
+}
+
+p,
+li {
+
+  font-family: $textColor;
+  font-weight: 300;
+  font-size: 1.6em;
+  line-height: 1.6;
+
+  > p { font-size: 1em }
+
+  img[src*="emoji"] {
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    vertical-align: middle;
+  }
+
+}
+
+.credit {
+  font-style: italic;
+  font-size: 1.2em;
+  a { border-bottom-color: transparent }
+}
+
+ul,
+ol {
+  margin-left: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}

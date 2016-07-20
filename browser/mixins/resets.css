@@ -1,0 +1,70 @@
+@define-mixin reset {
+    margin: 0;
+    padding: 0;
+}
+
+@define-mixin reset-button {
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    border: 0;
+    outline: none;
+    padding: 0;
+    background: none;
+}
+
+@define-mixin reset-dl {
+
+    margin: 0;
+    padding: 0;
+
+    dt, dd {
+        margin: 0;
+        padding: 0;
+    }
+
+}
+
+@define-mixin reset-control {
+
+    border: 0;
+    border-radius: 0;
+    background: none;
+    appearance: none;
+    outline: none;
+
+    &::-ms-expand { display: none }
+
+}
+
+@define-mixin reset-fieldset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+@define-mixin reset-list {
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    > * {
+        margin: 0;
+        padding: 0;
+    }
+
+}
+
+@define-mixin reset-link {
+
+    cursor: pointer;
+    border: 0;
+    text-decoration: none;
+
+    > * {
+        border: 0;
+        text-decoration: none;
+    }
+
+}

@@ -1,0 +1,46 @@
+@import '../browser/color';
+@import '../browser/typography';
+@import '../browser/mixins/disable';
+
+$timelineDot: 3em;
+
+.timeline {
+
+  position: relative;
+  margin-bottom: $marginY;
+  padding-left: 20rem;
+
+  &__date {
+
+    @mixin no-select;
+
+    display: block;
+    width: $timelineDot;
+    height: $timelineDot;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid color($red a(20%));
+    border-radius: 50%;
+    font-weight: 300;
+    font-family: $displayFamily;
+    text-align: center;
+    color: $red;
+  }
+
+  &__date_month {
+    display: block;
+    width: $timelineDot;
+    line-height: $timelineDot;
+    text-transform: lowercase;
+  }
+
+  &__date_year {
+    position: absolute;
+    top: 0;
+    left: 2.1em;
+    font-size: 1.8em;
+    line-height: 1.7;
+  }
+
+}

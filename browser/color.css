@@ -1,0 +1,10 @@
+$red: #dc3d1d;
+$black: #372522;
+$gray: #e6e4e3;
+$white: #fff;
+$lightGray: color($black a(20%));
+
+$backgroundColor: $gray;
+$textColor: $black;
+$knockoutColor: $gray;
+$panelColor: $white;

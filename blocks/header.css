@@ -1,0 +1,64 @@
+@import '../browser/color';
+@import '../browser/layout';
+@import '../browser/typography';
+@import '../browser/zindex';
+
+@keyframes pulse {
+  0% { transform: scale(.5) }
+  100% { transform: scale(1) }
+}
+
+$headerHeight: calc(20rem + $marginY);
+
+.header {
+
+  padding: $marginY $marginX;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindexHeader;
+  background-color: color($backgroundColor a(60%));
+
+  &__logo {
+
+    margin: 0;
+    padding: 0;
+    font-family: $logoFamily;
+    font-weight: normal;
+    line-height: 1;
+
+    a { @mixin reset-link; }
+
+    &:after {
+      @mixin bullet $red;
+      margin-left: .55em;
+    }
+
+  }
+
+  &__logo--loading:after {
+    animation-name: pulse;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+  }
+
+  &__text,
+  &__contact {
+    margin-bottom: 0;
+    font-family: $displayFamily;
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+
+  &__contact {
+    @mixin reset-link;
+    position: absolute;
+    right: $marginX;
+    bottom: $marginY;
+    border-top: 1px solid $lightGray;
+    padding-top: .5em;
+    font-weight: 300;
+  }
+
+}

@@ -1,0 +1,4 @@
+@define-mixin no-select {
+  cursor: default;
+  user-select: none;
+}

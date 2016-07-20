@@ -1,0 +1,18 @@
+$layoutWidth: 97.2rem;
+$marginX: 7rem;
+$marginY: 8rem;
+
+$gutterX: 2rem;
+$gutterY: 2rem;
+
+@define-mixin center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@define-mixin center-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

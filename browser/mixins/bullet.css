@@ -1,0 +1,9 @@
+@define-mixin bullet $color: $textColor {
+  content: '';
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  background-color: $color;
+  border-radius: 50%;
+  margin-bottom: .1em;
+}

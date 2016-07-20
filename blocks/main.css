@@ -1,0 +1,23 @@
+@import '../browser/layout';
+@import './header';
+@import './footer';
+
+.main {
+
+  lost-utility: clearfix;
+
+  position: relative;
+  min-height: calc(100vh - $headerHeight - $footerHeight - $marginY);
+  margin-bottom: $gutterY;
+  padding: $headerHeight $marginX $marginY $marginX;
+
+  &__content {
+    lost-column: 12/12;
+    box-sizing: border-box;
+  }
+
+  /* Suppress extra vertical space after images caused by whitespace */
+
+  img { line-height: 0 }
+
+}

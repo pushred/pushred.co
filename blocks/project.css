@@ -1,0 +1,51 @@
+@import '../browser/layout';
+@import '../browser/typography';
+@import '../browser/mixins/clearfix';
+@import '../browser/mixins/resets';
+
+.project {
+
+  @mixin clearfix;
+
+  &__title {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.6em;
+    line-height: 1.9; /* align with height of timeline dot */
+  }
+
+  &__summary,
+  &__details {
+
+    font-family: $textFamily;
+    font-size: 1.4em;
+
+    * { font-size: 1em }
+
+    ul { @mixin reset-list; }
+
+  }
+
+  &__details {
+    margin: .5em 0 0 0;
+    padding-left: 57rem;
+    position: absolute;
+    left: -$marginX;
+    right: -$marginX;
+    background-color: $panelColor;
+  }
+
+  &__preview {
+
+    width: 28rem;
+    position: relative;
+    z-index: $zindexContent;
+    float: left;
+    margin: 0 $gutterX $gutterY 0;
+    box-shadow: 0 4px 4px color($black a(12%));
+
+    > * { width: 28rem }
+
+  }
+
+}

@@ -1,12 +1,15 @@
 const browserSync = require('browser-sync').create();
+const browserify = require('browserify');
 const cleanUrls = require('clean-urls');
 const fs = require('fs');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const handlebars = require('gulp-hb');
 const Path = require('path');
+const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
 const run = require('run-sequence');
+const source = require('vinyl-source-stream');
 const svgmin = require('gulp-svgmin');
 const svgstore = require('gulp-svgstore');
 const watch = require('gulp-watch');
@@ -32,7 +35,7 @@ try {
 const CONTENT = Path.resolve(gutil.env.content || JSON.parse(contentConfig).path);
 gutil.log('Using content from', gutil.colors.magenta(CONTENT));
 
-gulp.task('build', ['buildPages', 'bundleSVG', 'copyStaticFiles']);
+gulp.task('build', ['buildPages', 'bundleCSS', 'bundleJS', 'bundleSVG', 'copyStaticFiles']);
 
 //////////////////
 // static site //
@@ -75,7 +78,32 @@ gulp.task('copyStaticFiles', () => {
 // assets //
 ///////////
 
-gulp.task('uploadAssets', () => uploadAssets(CONTENT));
+gulp.task('bundleCSS', () => {
+  return gulp
+    .src('browser/index.css')
+    .pipe(postcss([
+      require('postcss-import')({ glob: true }),
+      require('postcss-mixins'),
+      require('postcss-nested'),
+      require('postcss-simple-vars'),
+      require('postcss-color-function'),
+      require('postcss-calc'),
+      require('postcss-custom-media'),
+      require('lost'),
+      require('autoprefixer')({ browsers: ['last 2 versions', 'ie 9']})
+    ]))
+    .on('error', handleError)
+    .pipe(rename('bundle.css'))
+    .pipe(gulp.dest('.build/files'));
+});
+
+gulp.task('bundleJS', () => {
+  return browserify('browser/index.js')
+    .bundle()
+    .on('error', handleError)
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('.build/files'));
+});
 
 gulp.task('bundleSVG', () => {
   return gulp
@@ -95,6 +123,8 @@ gulp.task('bundleSVG', () => {
     .pipe(rename('bundle.svg'))
     .pipe(gulp.dest('.build/files'));
 });
+
+gulp.task('uploadAssets', () => uploadAssets(CONTENT));
 
 /////////////////////
 // preview server //

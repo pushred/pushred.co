@@ -1,0 +1,23 @@
+$touchTarget: 44px;
+
+@define-mixin pad-touch-target {
+
+    display: block;
+    width: $touchTarget;
+    height: $touchTarget;
+    line-height: $touchTarget;
+    text-align: center;
+
+}
+
+@define-mixin touch-scroll {
+
+    overflow: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+}
