@@ -1,6 +1,7 @@
 @import '../browser/layout';
 @import '../browser/typography';
 @import '../browser/mixins/clearfix';
+@import '../browser/mixins/disable';
 @import '../browser/mixins/resets';
 
 @import './timeline';
@@ -13,25 +14,31 @@
 
   position: relative;
 
-  &__title {
-    margin: 0;
-    font-weight: 300;
-    font-size: 1.6em;
-    line-height: 1.9; /* align with height of timeline dot */
-  }
-
   &__summary,
   &__details {
 
     lost-column: 7/12;
 
     font-family: $textFamily;
-    font-size: 1.4em;
+    font-size: 1.2em;
 
     * { font-size: 1em }
     *:last-child { margin-bottom: 0 }
 
     ul { @mixin reset-list; }
+
+  }
+
+  &__title {
+
+    @mixin no-select;
+
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.34em;
+    line-height: 1.995; /* align with height of timeline dot */
+
+    a { @mixin reset-link }
 
   }
 
