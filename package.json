@@ -16,7 +16,7 @@
     "gulp-svgstore": "^6.0.0",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.5",
-    "gulp-yaml": "^1.0.1",
+    "gulp-yaml": "github:pushred/gulp-yaml#expand-js-yaml-options",
     "handlebars": "^3.0.3",
     "js-yaml": "^3.6.1",
     "lost": "^7.0.3",

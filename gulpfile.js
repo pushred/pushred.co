@@ -45,7 +45,7 @@ gulp.task('build', ['getContent', 'buildPages', 'bundleCSS', 'bundleJS', 'bundle
 gulp.task('getContent', () => {
   return gulp
     .src(CONTENT + '/**/*.yml')
-    .pipe(yamlToJSON())
+    .pipe(yamlToJSON({ json: true }))
     .pipe(markdown())
     .pipe(gulp.dest('.build'));
 });
