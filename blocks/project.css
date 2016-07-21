@@ -119,9 +119,12 @@
     position: relative;
     z-index: $zindexContent;
     box-shadow: 0 4px 4px color($black a(12%));
+    line-height: 0;
 
     > * { width: 100% }
 
   }
+
+  &__preview.closest { border: 1px solid #ff0000 }
 
 }

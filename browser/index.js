@@ -1,4 +1,5 @@
 var dom = require('./dom');
+var VideoPlayer = require('../blocks/video_player');
 
 ///////////
 // load //
@@ -25,4 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
   dom.classList(logoEl).remove('header__logo--loading');
+
+  const player = VideoPlayer();
+  player.playNearestVideo();
+
+  window.addEventListener('scroll', () => {
+    player.playNearestVideo();
+  });
 });
