@@ -41,6 +41,11 @@
             <div class="project__summary">
               <h1 class="project__title">{{{title .}}}</h1>
               <p class="project__text">{{{description}}}</p>
+              {{#if details}}
+                <a class="project__expand" href="#details-{{@../index}}" title="More…">
+                  {{{icon 'expand'}}}
+                </a>
+              {{/if}}
             </div>
             {{#if details}}
               <div id="details-{{@../index}}" class="project__details">

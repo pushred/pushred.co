@@ -1,8 +1,9 @@
 $red: #dc3d1d;
 $black: #372522;
 $gray: #e6e4e3;
-$white: #fff;
+$white: color(#fff a(80%));
 $lightGray: color($black a(20%));
+$darkGray: color($black a(60%));
 
 $backgroundColor: $gray;
 $textColor: $black;

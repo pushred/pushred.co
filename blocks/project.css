@@ -63,12 +63,47 @@
 
   &__details,
   &__details_content {
+    max-height: 0;
     opacity: .75;
     transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
+  &__details_content { overflow: hidden }
+
   &__details_content > *:first-child { margin-top: $gutterY }
   &__details_content > *:last-child { margin-bottom: $gutterY }
+
+  &__details--open,
+  &__details--open .project__details_content {
+    opacity: 1;
+    max-height: 20em;
+  }
+
+  &__expand {
+
+    @mixin reset-link;
+
+    box-sizing: border-box;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid $lightGray;
+    color: $darkGray;
+    border-radius: 50%;
+
+    span { @mixin hide-element }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: .7rem;
+    }
+
+    &:hover { color: $red }
+
+    &--expanded { display: none }
+
+  }
 
   &__preview {
 
