@@ -43,6 +43,7 @@ $headerHeight: calc(20rem + $marginY);
   &__text,
   &__contact {
     margin-bottom: 0;
+    font-weight: 300;
     font-family: $displayFamily;
     font-size: 1.2em;
     line-height: 1.6;

@@ -20,14 +20,16 @@
 
     lost-column: 7/12;
 
-    font-family: $textFamily;
-    font-size: 1.2em;
-
-    * { font-size: 1em }
     *:last-child { margin-bottom: 0 }
 
     ul { @mixin reset-list; }
 
+  }
+
+  &__summary > * {
+    font-weight: 300;
+    font-size: 1.2em;
+    font-family: $displayFamily;
   }
 
   &__title {
@@ -36,10 +38,23 @@
 
     margin: 0;
     font-weight: 300;
-    font-size: 1.34em;
-    line-height: 1.995; /* align with height of timeline dot */
+    font-size: 1.8em;
+    line-height: 1.7; /* align with height of timeline dot */
 
     a { @mixin reset-link }
+
+  }
+
+  &__icon {
+
+    display: inline-block;
+    float: left;
+    width: 1.667em;
+    height: 1.667em;
+    line-height: 1.7;
+    margin-right: .25em;
+
+    + span { @mixin hide-element }
 
   }
 
@@ -50,6 +65,7 @@
     position: relative;
     margin-top: $gutterY;
     box-sizing: border-box;
+    font-family: $textFamily;
 
     * {
       position: relative;
@@ -78,13 +94,30 @@
       padding: .5em;
       color: $red;
       font-weight: 300;
-      font-size: 1em;
+      font-size: 1.2em;
+    }
+
+    li {
+      font-weight: 300;
+      font-size: 1.2em;
+      font-family: $displayFamily;
+      padding-left: calc(.5em + 1px);
+      line-height: 3;
     }
 
     /* credits */
 
     p em:only-child {
+      font-style: normal;
       color: $darkGray;
+      font-size: 1.2rem;
+      display: inline-block;
+      border-top: 1px solid $gray;
+      border-left: 1px solid $gray;
+      padding: .5em;
+
+      a { border: 0 }
+
     }
 
   }
@@ -103,7 +136,7 @@
   &__details_content { overflow: hidden }
 
   &__details_content > *:first-child { margin-top: $gutterY }
-  &__details_content > *:last-child { margin-bottom: $gutterY }
+  &__details_content > *:last-child { margin-bottom: $marginY }
 
   &__expand {
 
@@ -137,6 +170,7 @@
 
     lost-column: 3/12;
 
+    max-width: 28em;
     position: relative;
     overflow: hidden;
     z-index: $zindexContent;
@@ -167,6 +201,7 @@
       z-index: calc($zindexContent + 1);
     }
 
+    img,
     video {
       width: 100%;
       opacity: 1;

@@ -6,6 +6,7 @@
 
   min-height: calc(100vh - $headerHeight - $footerHeight - $marginY);
   margin-bottom: $gutterY;
+  padding-top: 20vh;
 
   &__content {
     box-sizing: border-box;

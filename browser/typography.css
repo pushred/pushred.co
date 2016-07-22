@@ -5,7 +5,7 @@
 
 $logoFamily: 'Input Sans';
 $displayFamily: 'Input Sans';
-$textFamily: 'Input Sans', 'Arial', sans-serif;
+$textFamily: 'Source Sans Pro', 'Arial', sans-serif;
 
 body {
   margin: 0;
@@ -39,7 +39,7 @@ p,
 li {
 
   font-family: $textColor;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.6em;
   line-height: 1.6;
 
@@ -49,6 +49,7 @@ li {
     display: inline-block;
     width: 1.4em;
     height: 1.4em;
+    margin-left: .5em;
     vertical-align: middle;
   }
 

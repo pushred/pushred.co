@@ -40,6 +40,10 @@
             </div>
             <div class="project__summary">
               <h1 class="project__title">
+                {{#isRepo url}}
+                  {{{icon 'GitHub' 'project__icon'}}}
+                {{/isRepo}}
+
                 {{#if url}}
                   <a href="{{url}}">{{{title .}}}</a>
                 {{else}}

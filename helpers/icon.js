@@ -8,8 +8,8 @@ module.exports = function (name, className) {
     : '';
 
   return `
-    <span>${name}</span>
     <svg class="${className}">
       <use xlink:href="/files/bundle.svg#${symbolName}">
-    </svg>`;
+    </svg>
+    <span>${name}</span>`;
 }
