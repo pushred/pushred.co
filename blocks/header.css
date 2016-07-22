@@ -12,18 +12,14 @@ $headerHeight: calc(20rem + $marginY);
 
 .header {
 
-  padding: $marginY $marginX;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: $zindexHeader;
-  background-color: color($backgroundColor a(60%));
+  position: relative;
+  margin-bottom: $marginY;
 
   &__logo {
 
     margin: 0;
     padding: 0;
+    background-color: color($backgroundColor a(60%));
     font-size: 1.2em;
     font-family: $logoFamily;
     font-weight: normal;
@@ -55,8 +51,8 @@ $headerHeight: calc(20rem + $marginY);
   &__contact {
     @mixin reset-link;
     position: absolute;
-    right: $marginX;
-    bottom: $marginY;
+    right: 0;
+    bottom: 0;
     border-top: 1px solid $lightGray;
     padding-top: .5em;
     font-weight: 300;
