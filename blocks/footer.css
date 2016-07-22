@@ -18,7 +18,7 @@ $footerHeight: calc(3em + ($marginY * 2));
   span { @mixin hide-element; }
 
   &__icon,
-  &__ansi { height: 3em }
+  &__ansi { height: 2.8em }
 
   &__icon {
     margin: 0 1em;
