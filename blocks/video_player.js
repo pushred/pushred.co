@@ -3,8 +3,38 @@ const dom = require('../browser/dom');
 function VideoPlayer () {
   if (!(this instanceof VideoPlayer)) return new VideoPlayer();
 
+  this.logoEl = logoEl = dom.find('.header__logo');
   this.mainEl = dom.find('main');
   this.previewEls = dom.findAll('.project__preview');
+
+  this.previewEls.forEach((previewEl) => {
+    let videoEl = dom.find('video', previewEl);
+    var progressEl;
+
+    if (!videoEl) return;
+
+    videoEl.on('loadedmetadata', () => {
+      previewEl.insertAdjacentHTML('afterbegin', '<div class="project__preview_progress">Loading</div>');
+      progressEl = dom.find('.project__preview_progress', previewEl);
+    });
+
+    videoEl.on('progress', (event) => {
+      if (videoEl.readyState === 0) return; // must have metadata
+
+      let progress = videoEl.buffered.end(0);
+      let total = videoEl.duration;
+
+      if (progress === total && progressEl.parentNode === previewEl) {
+        previewEl.removeChild(progressEl);
+        dom.classList(logoEl).remove('header__logo--loading');
+      }
+
+      if (progress === total) return;
+
+      dom.classList(logoEl).add('header__logo--loading');
+      progressEl.style.width = ((videoEl.buffered.end(0) / videoEl.duration) * 100).toString() + '%';
+    });
+  });
 }
 
 VideoPlayer.prototype.playNearestVideo = function () {

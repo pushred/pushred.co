@@ -150,18 +150,30 @@
       padding-bottom: 64.29%;
     }
 
-    > * {
+    > *,
+    &_progress {
       position: absolute;
       top: 0;
       left: 0;
     }
 
+    &_progress {
+      @mixin hide-text;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background-color: color($black a(12%));
+      z-index: calc($zindexContent + 1);
+    }
+
     video {
       width: 100%;
-      margin-top: -1px;
       opacity: 1;
       transition: .5s opacity;
     }
+
+    &_progress + video { opacity: 0 }
 
   }
 
