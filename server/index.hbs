@@ -28,16 +28,19 @@
         </time>
         {{#each .}}
           <article id="{{@key}}" class="project">
-            <div class="project__preview">
-              {{#video}}
-                <video class="project__video" loop preload>
-                  <source src="{{.}}" type="video/mp4" />
-                </video>
-              {{/video}}
-              {{#images}}
-                <img class="project__image" src="{{.}}" />
-              {{/images}}
-            </div>
+            {{#if preview}}
+              <div class="project__preview">
+                {{#preview}}
+                  {{#isVideo .}}
+                    <video class="project__video" loop preload="metadata">
+                      <source src="{{.}}" type="video/mp4" />
+                    </video>
+                  {{else}}
+                    <img class="project__image" src="{{.}}" />
+                  {{/isVideo}}
+                {{/preview}}
+              </div>
+            {{/if}}
             <div class="project__summary">
               <h1 class="project__title">
                 {{#isRepo url}}
