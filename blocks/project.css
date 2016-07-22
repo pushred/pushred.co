@@ -98,12 +98,18 @@
     }
 
     li {
-      font-weight: 300;
-      font-size: 1.2em;
-      font-family: $displayFamily;
       padding-left: calc(.5em + 1px);
       line-height: 3;
     }
+
+    li,
+    li p {
+      font-weight: 300;
+      font-size: 1.2em;
+      font-family: $displayFamily;
+    }
+
+    li p { font-size: 1em }
 
     /* credits */
 
@@ -193,12 +199,12 @@
 
     &_progress {
       @mixin hide-text;
+      height: 4px;
       position: absolute;
-      top: 0;
       bottom: 0;
       left: 0;
       background-color: color($black a(12%));
-      z-index: calc($zindexContent + 1);
+      z-index: $zindexContent;
     }
 
     img,
@@ -207,8 +213,6 @@
       opacity: 1;
       transition: .5s opacity;
     }
-
-    &_progress + video { opacity: 0 }
 
   }
 

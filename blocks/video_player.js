@@ -10,6 +10,7 @@ function VideoPlayer () {
   this.previewEls.forEach((previewEl) => {
     let videoEl = dom.find('video', previewEl);
     var progressEl;
+    var hasPlayed;
 
     if (!videoEl) return;
 
@@ -18,21 +19,24 @@ function VideoPlayer () {
       progressEl = dom.find('.project__preview_progress', previewEl);
     });
 
+    videoEl.on('canplaythrough', () => {
+      if (progressEl.parentNode === previewEl) previewEl.removeChild(progressEl);
+    });
+
     videoEl.on('progress', (event) => {
-      if (videoEl.readyState === 0) return; // must have metadata
+      if (videoEl.readyState === 0 || hasPlayed) return; // must have metadata and never played before
 
       let progress = videoEl.buffered.end(0);
       let total = videoEl.duration;
 
-      if (progress === total && progressEl.parentNode === previewEl) {
-        previewEl.removeChild(progressEl);
-        dom.classList(logoEl).remove('header__logo--loading');
-      }
-
       if (progress === total) return;
 
-      dom.classList(logoEl).add('header__logo--loading');
-      progressEl.style.width = ((videoEl.buffered.end(0) / videoEl.duration) * 100).toString() + '%';
+      if (progressEl) progressEl.style.width = ((videoEl.buffered.end(0) / videoEl.duration) * 100).toString() + '%';
+    });
+
+    videoEl.on('playing', () => {
+      hasPlayed = true;
+      if (progressEl) dom.classList(progressEl).add('project__preview_progress--playing');
     });
   });
 }
@@ -52,7 +56,16 @@ VideoPlayer.prototype.playNearestVideo = function () {
     });
   });
 
-  let closestIndex = offsets.sort((a, b) => a.distance - b.distance)[0].index;
+  var isTop = window.scrollY === 0;
+  var isBottom = (window.scrollY + window.innerHeight) === document.scrollingElement.scrollHeight;
+
+  if (isTop) {
+    var closestIndex = 0;
+  } else if (isBottom) {
+    var closestIndex = this.previewEls.length - 1;
+  } else {
+    var closestIndex = offsets.sort((a, b) => a.distance - b.distance)[0].index;
+  }
 
   // focus current project and play
 
