@@ -147,7 +147,7 @@ gulp.task('default', ['build'], () => {
   });
 
   watch(['server/**/*.hbs', CONTENT + '/**/*.{md,yml}'], () => {
-    run('buildPages', browserSync.reload);
+    run('getContent', 'buildPages', browserSync.reload);
   });
 
   watch(['browser/*.css', 'blocks/*.css'], () => {
