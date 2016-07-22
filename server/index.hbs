@@ -27,7 +27,7 @@
           <span class="timeline__date_year">{{date @key '`YY'}}</span>
         </time>
         {{#each .}}
-          <article class="project">
+          <article id="{{@key}}" class="project">
             <div class="project__preview">
               {{#video}}
                 <video class="project__video" loop preload>
