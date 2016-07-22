@@ -21,7 +21,9 @@ VideoPlayer.prototype.playNearestVideo = function () {
   let closestIndex = offsets.sort((a, b) => a.distance - b.distance)[0].index - 1;
   let videoEl = dom.find('video', this.previewEls[closestIndex]);
 
+  dom.classList(this.previewEls[closestIndex]).add('project__preview--focused');
   if (videoEl && videoEl.paused) videoEl.play();
+
 
   // pause other videos
 
@@ -29,6 +31,8 @@ VideoPlayer.prototype.playNearestVideo = function () {
   previewEls.splice(closestIndex, 1);
 
   previewEls.forEach((previewEl) => {
+    dom.classList(previewEl).remove('project__preview--focused');
+
     let videoEl = dom.find('video', previewEl);
     if (videoEl) videoEl.pause();
   });
