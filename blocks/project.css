@@ -69,25 +69,41 @@
       z-index: $zindexBackground;
     }
 
+    h1,
+    h2,
+    h3 {
+      display: inline-block;
+      border-bottom: 1px solid $gray;
+      border-left: 1px solid $gray;
+      padding: .5em;
+      color: $red;
+      font-weight: 300;
+      font-size: 1em;
+    }
+
+    /* credits */
+
+    p em:only-child {
+      color: $darkGray;
+    }
+
   }
 
   &__details,
   &__details_content {
-    max-height: 0;
-    opacity: .75;
-    transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity: 1;
+  }
+
+  &__details--collapsed,
+  &__details--collapsed .project__details_content {
+    height: 0 !important;
+    opacity: 1;
   }
 
   &__details_content { overflow: hidden }
 
   &__details_content > *:first-child { margin-top: $gutterY }
   &__details_content > *:last-child { margin-bottom: $gutterY }
-
-  &__details--open,
-  &__details--open .project__details_content {
-    opacity: 1;
-    max-height: 60em;
-  }
 
   &__expand {
 
@@ -105,9 +121,10 @@
     span { @mixin hide-element }
 
     svg {
+      pointer-events: none;
       width: 1.5rem;
       height: 1.5rem;
-      margin: .7rem;
+      padding: .7rem;
     }
 
     &:hover { color: $red }
@@ -124,12 +141,26 @@
     overflow: hidden;
     z-index: $zindexContent;
     box-shadow: 0 0 4px color($black a(12%));
-    line-height: 0;
     transition: all .5s;
 
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-bottom: 64.29%;
+    }
+
     > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    video {
       width: 100%;
       margin-top: -1px;
+      opacity: 1;
+      transition: .5s opacity;
     }
 
   }
@@ -140,5 +171,12 @@
   }
 
   &__preview.closest { border: 1px solid #ff0000 }
+
+}
+
+.main--loaded .project {
+
+  &__details,
+  &__details_content { transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) } /* defer while measuring on DOM load */
 
 }

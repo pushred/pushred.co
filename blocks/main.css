@@ -15,4 +15,8 @@
 
   img { line-height: 0 }
 
+  /* Hide content while loading/measuring toggled sections */
+
+  &--loading { opacity: 0 }
+
 }
