@@ -2,15 +2,19 @@ const dom = require('../browser/dom');
 
 function VideoPlayer () {
   if (!(this instanceof VideoPlayer)) return new VideoPlayer();
+
+  this.mainEl = dom.find('main');
   this.previewEls = dom.findAll('.project__preview');
 }
 
 VideoPlayer.prototype.playNearestVideo = function () {
   let offsets = [];
-  let midY = (window.scrollY + window.innerHeight) / 2;
+  let midY = window.scrollY + (window.innerHeight / 2);
+  let midContent = parseFloat(window.getComputedStyle(this.previewEls[0]).height) / 2;
 
   this.previewEls.forEach((el, index) => {
-    let distance = Math.abs(midY - el.parentNode.parentNode.offsetTop); // must back up to timeline el
+    let elTop = Math.abs(el.parentNode.parentNode.getBoundingClientRect().top); // must back up to timeline el
+    let distance = Math.abs(midY - (window.scrollY + elTop + midContent));
 
     offsets.push({
       distance: distance,
@@ -18,12 +22,14 @@ VideoPlayer.prototype.playNearestVideo = function () {
     });
   });
 
-  let closestIndex = offsets.sort((a, b) => a.distance - b.distance)[0].index - 1;
-  let videoEl = dom.find('video', this.previewEls[closestIndex]);
+  let closestIndex = offsets.sort((a, b) => a.distance - b.distance)[0].index;
+
+  // focus current project and play
 
   dom.classList(this.previewEls[closestIndex]).add('project__preview--focused');
-  if (videoEl && videoEl.paused) videoEl.play();
 
+  let videoEl = dom.find('video', this.previewEls[closestIndex]);
+  if (videoEl && videoEl.paused) videoEl.play();
 
   // pause other videos
 
