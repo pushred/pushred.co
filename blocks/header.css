@@ -42,7 +42,6 @@ $headerHeight: calc(20rem + $marginY);
 
   &__text,
   &__contact {
-    margin-bottom: 0;
     font-weight: 300;
     font-family: $displayFamily;
     font-size: 1.2em;
@@ -51,12 +50,36 @@ $headerHeight: calc(20rem + $marginY);
 
   &__contact {
     @mixin reset-link;
-    position: absolute;
-    right: 0;
-    bottom: 0;
     border-top: 1px solid $lightGray;
     padding-top: .5em;
     font-weight: 300;
+  }
+
+}
+
+@media (--mid) {
+
+  .header {
+
+    &__contact {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+  }
+
+}
+
+@media (--small) {
+
+  .header {
+
+    &__text,
+    &__contact {
+      margin-bottom: $marginY;
+    }
+
   }
 
 }

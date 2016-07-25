@@ -1,3 +1,4 @@
+@import '../browser/breakpoints';
 @import '../browser/color';
 @import '../browser/typography';
 @import '../browser/mixins/disable';
@@ -16,9 +17,7 @@ $timelineDot: 3em;
     display: block;
     width: $timelineDot;
     height: $timelineDot;
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin-bottom: $marginY;
     border: 1px solid color($red a(20%));
     border-radius: 50%;
     font-weight: 300;
@@ -40,6 +39,20 @@ $timelineDot: 3em;
     left: 2.1em;
     font-size: 1.8em;
     line-height: 1.7;
+  }
+
+}
+
+@media (--mid) {
+
+  .timeline {
+
+    &__date {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
   }
 
 }

@@ -1,3 +1,4 @@
+@import '../browser/breakpoints';
 @import '../browser/layout';
 @import '../browser/typography';
 @import '../browser/mixins/clearfix';
@@ -8,17 +9,11 @@
 
 .project {
 
-  @mixin clearfix;
-
-  lost-offset: -2/12;
-
   position: relative;
   margin-bottom: $marginY;
 
   &__summary,
   &__details {
-
-    lost-column: 7/12;
 
     *:last-child { margin-bottom: 0 }
 
@@ -98,8 +93,13 @@
     }
 
     li {
+
+      margin: 1em 0;
       padding-left: calc(.5em + 1px);
-      line-height: 3;
+
+      &:first-child { margin-top: 0 }
+      &:last-child { margin-bottom: 0 }
+
     }
 
     li,
@@ -174,9 +174,8 @@
 
   &__preview {
 
-    lost-column: 3/12;
-
     max-width: 28em;
+    margin-bottom: $gutterY;
     position: relative;
     overflow: hidden;
     z-index: $zindexContent;
@@ -216,12 +215,7 @@
 
   }
 
-  &__preview--focused {
-    box-shadow: 0 4px 4px color($black a(25%));
-    transform: scale(1.08);
-  }
-
-  &__preview.closest { border: 1px solid #ff0000 }
+  &__preview--focused { box-shadow: 0 4px 4px color($black a(25%)) }
 
 }
 
@@ -229,5 +223,24 @@
 
   &__details,
   &__details_content { transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) } /* defer while measuring on DOM load */
+
+}
+
+
+@media (--mid) {
+
+  .project {
+
+    @mixin clearfix;
+
+    lost-offset: -2/12;
+
+    &__summary,
+    &__details { lost-column: 7/12 }
+
+    &__preview { lost-column: 3/12 }
+    &__preview--focused { transform: scale(1.08) }
+
+  }
 
 }

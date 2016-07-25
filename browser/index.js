@@ -62,6 +62,17 @@ window.addEventListener('load', () => {
 
 function measureDetails () {
   detailsEls.forEach((el) => {
+    let isCollapsed = dom.classList(el).contains('project__details--collapsed');
+
+    // peek and measure
+    el.style.opacity = '0';
+    if (isCollapsed) dom.classList(el).remove('project__details--collapsed');
+    el.style.height = 'auto';
     el.style.height = el.clientHeight.toString() + 'px';
+
+    // restore
+
+    if (isCollapsed) dom.classList(el).add('project__details--collapsed');
+    el.style.opacity = '1';
   });
 }
