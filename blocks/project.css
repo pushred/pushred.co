@@ -10,7 +10,10 @@
 .project {
 
   position: relative;
-  margin: $marginY $marginX;
+  margin-left: $marginX;
+  margin-right: $marginX;
+
+  + .project { margin-top: $marginY }
 
   &__summary,
   &__details {

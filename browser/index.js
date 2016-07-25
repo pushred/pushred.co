@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // polyfill document.scrollingElement
   require('scrollingelement');
 
+  // polyfill svg external use
+  require('svg4everybody')();
+
   player = VideoPlayer();
 
   logoEl = dom.find('.header__logo');

@@ -9,7 +9,7 @@ module.exports = function (name, className) {
 
   return `
     <svg class="${className}">
-      <use xlink:href="/files/bundle.svg#${symbolName}">
+      <use xlink:href="/files/bundle.svg#${symbolName}"></use>
     </svg>
     <span>${name}</span>`;
 }

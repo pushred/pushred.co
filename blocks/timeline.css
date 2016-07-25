@@ -7,6 +7,7 @@ $timelineDot: 3em;
 
 .timeline {
 
+  overflow: hidden;
   position: relative;
   margin-bottom: $marginY;
 
@@ -19,6 +20,7 @@ $timelineDot: 3em;
     height: $timelineDot;
     position: relative;
     margin-left: $marginX;
+    margin-bottom: $marginY;
     border: 1px solid color($red a(20%));
     border-radius: 50%;
     font-weight: 300;
