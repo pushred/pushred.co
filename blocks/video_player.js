@@ -4,39 +4,6 @@ function VideoPlayer () {
   if (!(this instanceof VideoPlayer)) return new VideoPlayer();
 
   this.previewEls = dom.findAll('.project__preview');
-
-  this.previewEls.forEach((previewEl) => {
-    let videoEl = dom.find('video', previewEl);
-    var progressEl;
-    var hasPlayed;
-
-    if (!videoEl) return;
-
-    videoEl.on('loadedmetadata', () => {
-      previewEl.insertAdjacentHTML('afterbegin', '<div class="project__preview_progress">Loading</div>');
-      progressEl = dom.find('.project__preview_progress', previewEl);
-    });
-
-    videoEl.on('canplaythrough', () => {
-      if (progressEl.parentNode === previewEl) previewEl.removeChild(progressEl);
-    });
-
-    videoEl.on('progress', (event) => {
-      if (videoEl.readyState === 0 || hasPlayed) return; // must have metadata and never played before
-
-      let progress = videoEl.buffered.end(0);
-      let total = videoEl.duration;
-
-      if (progress === total) return;
-
-      if (progressEl) progressEl.style.width = ((videoEl.buffered.end(0) / videoEl.duration) * 100).toString() + '%';
-    });
-
-    videoEl.on('playing', () => {
-      hasPlayed = true;
-      if (progressEl) dom.classList(progressEl).add('project__preview_progress--playing');
-    });
-  });
 }
 
 VideoPlayer.prototype.playNearestVideo = function () {
