@@ -32,7 +32,7 @@
               <div class="project__preview">
                 {{#preview}}
                   {{#isVideo .}}
-                    <video class="project__video" loop preload="metadata">
+                    <video class="project__video" loop preload="metadata" poster="{{replace this 'mp4' 'png'}}">
                       <source src="{{.}}" type="video/mp4" />
                     </video>
                   {{else}}
@@ -55,13 +55,13 @@
               </h1>
               <p class="project__text">{{{summary}}}</p>
               {{#if details}}
-                <a class="project__expand" href="#details-{{@../index}}" title="More…">
+                <a class="project__expand" href="#details-{{@key}}" title="More…">
                   {{{icon 'expand'}}}
                 </a>
               {{/if}}
             </div>
             {{#if details}}
-              <div id="details-{{@../index}}" class="project__details">
+              <div id="details-{{@key}}" class="project__details">
                 <div class="project__details_content">
                   {{{details}}}
                 </div>
