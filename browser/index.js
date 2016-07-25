@@ -2,6 +2,8 @@ var dom = require('./dom');
 var VideoPlayer = require('../blocks/video_player');
 var unorphan = require('unorphan');
 
+var player;
+
 ///////////
 // load //
 /////////
@@ -14,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // polyfill document.scrollingElement
   require('scrollingelement');
+
+  player = VideoPlayer();
 
   logoEl = dom.find('.header__logo');
   mainEl = dom.find('main');
@@ -34,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.classList(el).add('project__expand--expanded');
         dom.classList(detailsEl).remove('project__details--collapsed');
       }
+
+      setTimeout(() => player.playNearestVideo(), 250); // wait for CSS animation
     });
   });
 });
@@ -49,7 +55,6 @@ window.addEventListener('load', () => {
 
   dom.classList(mainEl).remove('main--loading');
 
-  const player = VideoPlayer();
   player.playNearestVideo();
 
   window.addEventListener('scroll', () => {
