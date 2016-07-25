@@ -11,6 +11,10 @@ var mainEl;
 var detailsEls;
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // polyfill document.scrollingElement
+  require('scrollingelement');
+
   logoEl = dom.find('.header__logo');
   mainEl = dom.find('main');
   detailsEls = dom.findAll('.project__details');
