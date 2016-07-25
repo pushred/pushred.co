@@ -1,5 +1,6 @@
 var dom = require('./dom');
 var VideoPlayer = require('../blocks/video_player');
+var unorphan = require('unorphan');
 
 ///////////
 // load //
@@ -16,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dom.classList(logoEl).add('header__logo--loading');
   dom.classList(mainEl).add('main--loading');
+
+  unorphan('p, li');
 
   dom.findAll('.project__expand').forEach((el) => {
     el.on('click', (event) => {
