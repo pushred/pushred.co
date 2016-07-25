@@ -1,5 +1,6 @@
 @import '../browser/color';
 @import '../browser/layout';
+@import '../browser/mixins/clearfix';
 @import '../browser/mixins/hide';
 @import '../browser/mixins/resets';
 
@@ -7,7 +8,8 @@ $footerHeight: calc(3em + ($marginY * 2));
 
 .footer {
 
-  margin: $marginY 0;
+  @mixin clearfix;
+  margin: $marginY $marginX;
 
   &__link {
     @mixin reset-link;

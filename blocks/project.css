@@ -10,7 +10,7 @@
 .project {
 
   position: relative;
-  margin-bottom: $marginY;
+  margin: $marginY $marginX;
 
   &__summary,
   &__details {
@@ -65,19 +65,6 @@
     * {
       position: relative;
       z-index: $zindexContent;
-    }
-
-    &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      width: 200vw;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: -50vw;
-      background-color: $panelColor;
-      z-index: $zindexBackground;
     }
 
     h1,
@@ -241,6 +228,27 @@
     &__preview { lost-column: 3/12 }
     &__preview--focused { transform: scale(1.08) }
 
+  }
+
+  .project__details:after {
+    content: '';
+    position: absolute;
+    width: 200vw;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -50vw;
+    background-color: $panelColor;
+    z-index: $zindexBackground;
+  }
+
+}
+
+@media (--small) {
+
+  .project__details {
+    padding: 0 $gutterX;
+    background-color: $panelColor;
   }
 
 }

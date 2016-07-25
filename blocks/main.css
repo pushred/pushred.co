@@ -7,9 +7,7 @@
   min-height: calc(100vh - $headerHeight - $footerHeight - $marginY);
   margin-bottom: $gutterY;
 
-  &__content {
-    box-sizing: border-box;
-  }
+  &__content { box-sizing: border-box }
 
   /* Suppress extra vertical space after images caused by whitespace */
 
@@ -23,6 +21,9 @@
 
 @media (--mid) {
 
-  .main { padding-top: 20vh }
+  .main {
+    overflow: hidden;
+    margin-top: $marginY;
+  }
 
 }

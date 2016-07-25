@@ -13,7 +13,7 @@ $headerHeight: calc(20rem + $marginY);
 .header {
 
   position: relative;
-  margin-bottom: $marginY;
+  margin: $marginY $marginX;
 
   &__logo {
 
