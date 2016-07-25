@@ -57,6 +57,8 @@ Dependencies
 
  - [gulp-s3-upload][gulp-s3-upload] uploads any new assets found in the content folder to the `pushred-files` S3 bucket, accessible via CloudFront at `http://files.pushred.co/*`
 
+ - [surge][surge]
+
 
 Local Editing
 -------------
@@ -88,6 +90,7 @@ The content path can also be defined in `/config/content.json` with the property
 [handlebars]: http://handlebarsjs.com
 [svg-sprites]: https://css-tricks.com/svg-symbol-good-choice-icons/
 [svg-styling]: http://tympanus.net/codrops/2015/07/16/styling-svg-use-content-css/
+[surge]: http://surge.sh/
 [node]: https://nodejs.org
 [npm]: https://docs.npmjs.com/getting-started/installing-npm-packages-locally
 [npm-permissions]: https://docs.npmjs.com/getting-started/fixing-npm-permissions
