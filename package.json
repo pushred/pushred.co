@@ -2,14 +2,11 @@
   "name": "pushred.co",
   "author": "Eric Lanehart <eric@pushred.co> (http://pushred.co)",
   "devDependencies": {
-    "arrayify": "^1.0.0",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "babelify": "^7.3.0",
     "browserify": "^11.1.0",
-    "component-query": "0.0.3",
-    "dom-classlist": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-hashsum": "^1.0.0",
     "gulp-hb": "^5.1.0",
@@ -22,7 +19,6 @@
     "gulp-yaml": "github:pushred/gulp-yaml#expand-js-yaml-options",
     "handlebars": "^3.0.3",
     "js-yaml": "^3.6.1",
-    "lost": "^7.0.3",
     "markdown-it": "^4.4.0",
     "moment": "^2.14.1",
     "munge": "^0.1.7",
@@ -35,11 +31,17 @@
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^1.0.1",
     "run-sequence": "^1.1.4",
+    "through2": "^2.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "arrayify": "^1.0.0",
+    "component-query": "0.0.3",
+    "dom-classlist": "^1.0.1",
+    "lost": "^7.0.3",
     "scrollingelement": "^1.5.1",
     "svg4everybody": "^2.1.0",
-    "through2": "^2.0.0",
-    "unorphan": "^1.2.1",
-    "vinyl-source-stream": "^1.1.0"
+    "unorphan": "^1.2.1"
   },
   "optionalDependencies": {
     "browser-sync": "^2.9.6",
