@@ -9,7 +9,10 @@
 @import './typography';
 @import './zindex';
 
-html { font-size: 62.5% } /* reset root em unit to 10px */
+html {
+  font-size: 62.5%; /* reset root em unit to 10px */
+  text-size-adjust: none; /* keep font size consistent between orientations */
+}
 
 body {
   margin: 0;
