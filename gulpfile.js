@@ -100,6 +100,7 @@ gulp.task('bundleCSS', () => {
 
 gulp.task('bundleJS', () => {
   return browserify('browser/index.js')
+    .transform('babelify', { presets: ['es2015'] })
     .bundle()
     .on('error', handleError)
     .pipe(source('bundle.js'))

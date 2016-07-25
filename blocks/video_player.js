@@ -3,8 +3,6 @@ const dom = require('../browser/dom');
 function VideoPlayer () {
   if (!(this instanceof VideoPlayer)) return new VideoPlayer();
 
-  this.logoEl = logoEl = dom.find('.header__logo');
-  this.mainEl = dom.find('main');
   this.previewEls = dom.findAll('.project__preview');
 
   this.previewEls.forEach((previewEl) => {
