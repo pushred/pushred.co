@@ -1,6 +1,9 @@
 {
   "name": "pushred.co",
   "author": "Eric Lanehart <eric@pushred.co> (http://pushred.co)",
+  "scripts": {
+    "deploy": "gulp build && surge .build pushred.co"
+  },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.11.4",
