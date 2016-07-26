@@ -7,6 +7,11 @@ function VideoPlayer () {
 }
 
 VideoPlayer.prototype.playNearestVideo = function () {
+  if (window.matchMedia('(max-width: 736px)').matches) {
+    pauseVideos(this.previewEls);
+    return; // disable for inline videos (iPhone)
+  }
+
   let offsets = [];
   let midY = window.scrollY + (window.innerHeight / 2);
   let midContent = parseFloat(window.getComputedStyle(this.previewEls[0]).height) / 2;
@@ -44,6 +49,12 @@ VideoPlayer.prototype.playNearestVideo = function () {
   let previewEls = this.previewEls.slice(); // copy array
   previewEls.splice(closestIndex, 1);
 
+  pauseVideos(previewEls);
+}
+
+module.exports = VideoPlayer;
+
+function pauseVideos (previewEls) {
   previewEls.forEach((previewEl) => {
     dom.classList(previewEl).remove('project__preview--focused');
 
@@ -51,5 +62,3 @@ VideoPlayer.prototype.playNearestVideo = function () {
     if (videoEl) videoEl.pause();
   });
 }
-
-module.exports = VideoPlayer;
