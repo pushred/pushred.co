@@ -43,8 +43,19 @@ $footerHeight: calc(3em + ($marginY * 2));
 
   &__icon--ansi {
     width: 2.6em;
-    float: right;
     color: $red;
+  }
+
+}
+
+@media (--mid) {
+
+  .footer {
+
+    &__icon--ansi {
+      float: right;
+    }
+
   }
 
 }
